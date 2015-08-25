@@ -25,3 +25,5 @@ Write-Host "If you have seen no errors the toolbox has been removed"
 pause
 
 }
+
+remove-toolbox
