@@ -1,0 +1,27 @@
+####
+#Created by: Paul Braunschweig
+#Version 1.0
+####
+#
+#This script will remove the toolbox porfile. 
+#
+#Example: remove-toolbox
+#
+#
+#
+#
+#
+
+function remove-toolbox {
+
+$user = Read-Host "Please enter your username"
+
+$toolboxdir = "C:\Users\$user\Documents\WindowsPowerShell"
+
+Remove-Item -Recurse -Force $toolboxdir
+
+Write-Host "If you have seen no errors the toolbox has been removed"
+
+pause
+
+}
