@@ -55,7 +55,7 @@ $user = ([Environment]::UserName)
 if ($test -eq $false) {
 
 ########Download and create powershell profile from an online source. 
-$content = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/sinns804/pshelldocks/master/ToolBoxProfile -UseBasicParsing).content
+$content = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/sinns804/pshelldocks/master/Tool-Index -UseBasicParsing).content
 
 New-Item "C:\Users\pbraunsc\Documents\WindowsPowerShell" -ItemType directory
 
