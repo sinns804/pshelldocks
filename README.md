@@ -2,6 +2,8 @@
 
 
 
+#HOW TO USE: To setup just download or copy the code from the Tool-Index script. Then select option 1 to install the toolbox, it will setup the rest for you and all the scripts with it. 
+
 stuff I need to download for pshell related jazz
 
 
