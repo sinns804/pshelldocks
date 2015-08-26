@@ -3,6 +3,7 @@
 #My Profile, sets the location to C and edits the window a little. Functions below are neat. 
 ######
 
+
 $user = ([Environment]::UserName)
 
 function toolbox ($default, $paul, $basic) {
@@ -27,11 +28,12 @@ If the toolbox is not installed you will see a lot of red text. :)
 Created by: Paul Braunschweig
 "
 [Int]$toolmenu = read-host "Please enter an option 1 through 10 and press enter..." }
+clear
 # back end of menu
 switch ($toolmenu){
 1 {clear ; get-toolbox}
-2 {& C:\Users\$user\Documents\WindowsPowerShell\scripts\remove-profile.ps1}
-3 {clear ; & $PSScriptRoot\scripts\start_updates.ps1}
+2 {clear ; & C:\Users\$user\Documents\WindowsPowerShell\scripts\remove-profile.ps1}
+3 {clear ; & C:\Users\$user\Documents\WindowsPowerShell\scripts\start_updates.ps1}
 4 {clear ; & $PSScriptRoot\scripts\}
 5 {clear ; & $PSScriptRoot\scripts\}
 6 {clear ; & $PSScriptRoot\scripts\}
@@ -48,7 +50,7 @@ switch ($toolmenu){
 Function get-toolbox {
 
 #little bit of setup
-$test = (Test-Path $profile)
+$test = (Test-Path "C:\Users\$user\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1")
 
 $user = ([Environment]::UserName)
 
@@ -57,7 +59,7 @@ if ($test -eq $false) {
 ########Download and create powershell profile from an online source. 
 $content = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/sinns804/pshelldocks/master/Tool-Index -UseBasicParsing).content
 
-New-Item "C:\Users\pbraunsc\Documents\WindowsPowerShell" -ItemType directory
+New-Item "C:\Users\$user\Documents\WindowsPowerShell" -ItemType directory
 
 $content | Out-File "C:\Users\$user\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 #########End of profile creation.
@@ -67,15 +69,27 @@ $content | Out-File "C:\Users\$user\Documents\WindowsPowerShell\Microsoft.PowerS
 
 #Create the scripts folder and fill it with lovely scripts!
 New-Item "C:\Users\pbraunsc\Documents\WindowsPowerShell\scripts\" -ItemType directory
-1
+
 $content = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/sinns804/pshelldocks/master/remove-toolbox -UseBasicParsing).content
 
 $content | Out-File "C:\Users\$user\Documents\WindowsPowerShell\scripts\remove-profile.ps1"
+clear
 
-Write-Host "Completed: If you experinced any errors a profile might already exist, selection option #2 and try again."
+
+New-Item "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PSWindowsUpdate" -ItemType directory
+
+$content = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/sinns804/pshelldocks/master/get-wuinstall -UseBasicParsing).content
+
+$content | Out-File "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PSWindowsUpdate\Get-WUInstall.ps1"
+
+$content = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/sinns804/pshelldocks/master/start_updates.ps1 -UseBasicParsing).content
+
+$content | Out-File "C:\Users\$user\Documents\WindowsPowerShell\scripts\start_updates.ps1"
+
+Write-Host "Completed: If you experince any errors or the toolbox is missing a profile might already exist, selection option #2 and try again."
 
 pause
-
+clear
     }
 }
 
