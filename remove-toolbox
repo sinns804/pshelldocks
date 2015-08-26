@@ -20,10 +20,12 @@ $toolboxdir = "C:\Users\$user\Documents\WindowsPowerShell"
 
 Remove-Item -Recurse -Force $toolboxdir
 
+}
+
+remove-toolbox
+
 Write-Host "If you have seen no errors the toolbox has been removed"
 
 pause
 
-}
-
-remove-toolbox
+clear
