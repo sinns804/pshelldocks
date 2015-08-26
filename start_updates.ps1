@@ -27,4 +27,4 @@
 Import-Module PSWindowsUpdate -Verbose
 
 #Start the updates
-Get-WUInstall
+Get-WUInstall -Verbose
