@@ -42,4 +42,4 @@ Get-ADGroupMember $group -Recursive | Format-Table -AutoSize | Out-File C:\membe
     }
 
 
-
+clear
